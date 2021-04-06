@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -19,6 +20,13 @@ public class Day01 implements Days {
     private final HashMap<String, ProblemStatusEnum> problemStatus;
 
     private final int[] numbers;
+
+    Day01() {
+        this.problemStatus = new HashMap<>();
+        this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
+        this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
+        this.numbers = new int[]{};
+    }
 
     @Autowired
     Day01(FileReaders fileReaders, @Value("${day1.file}") String filePath) {
@@ -77,12 +85,12 @@ public class Day01 implements Days {
      * @param values values
      * @return Returns the product of all list entries.
      */
-    private int multiplyListEntries(int[] values) {
-        int result = 1;
-        for (int value : values) {
-            result = result * value;
+    int multiplyListEntries(int[] values) {
+        if(values.length > 0){
+            return Arrays.stream(values).reduce(1, (a, b) -> a * b);
+        } else {
+            return 0;
         }
-        return result;
     }
 
     /***
@@ -92,7 +100,7 @@ public class Day01 implements Days {
      * @param x sum of the two list entries
      * @return Returns the list entries witch add up to x.
      */
-    private int[] findTwoEntriesThatSumToX(int[] values, int x) {
+    int[] findTwoEntriesThatSumToX(int[] values, int x) {
         int[] entries = null;
         outer:
         for (int i = 0; i < values.length - 1; i++) {
@@ -114,7 +122,7 @@ public class Day01 implements Days {
      * @param x sum of the three list entries
      * @return Returns the list entries witch add up to x.
      */
-    private int[] findThreeEntriesThatSumToX(int[] values, int x) {
+    int[] findThreeEntriesThatSumToX(int[] values, int x) {
         int[] entries = null;
         outer:
         for (int i = 0; i < values.length - 3; i++) {

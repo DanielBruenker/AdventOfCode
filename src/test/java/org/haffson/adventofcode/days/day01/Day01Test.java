@@ -1,13 +1,14 @@
 package org.haffson.adventofcode.days.day01;
 
 import org.haffson.adventofcode.utils.FileReaders;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
@@ -24,7 +25,25 @@ public class Day01Test {
         Day01 day01 = new Day01(fileReaders, filePath);
         int expectedResult = 1;
         int actualResult = day01.getDay();
-        Assert.assertEquals(expectedResult, actualResult);
+        assertThat(expectedResult).isEqualTo(actualResult);
+    }
+
+    @Test
+    public void testMultiplyListEntries(){
+        Day01 day01 = new Day01(fileReaders, filePath);
+        int[] values = new int[]{979, 366, 675};
+        int expectedResult = 241861950;
+        int actualResult = day01.multiplyListEntries(values);
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void testMultiplyListEntriesWithEmptyList(){
+        Day01 day01 = new Day01(fileReaders, filePath);
+        int[] values = new int[]{};
+        int expectedResult = 0;
+        int actualResult = day01.multiplyListEntries(values);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
@@ -32,7 +51,7 @@ public class Day01Test {
         Day01 day01 = new Day01(fileReaders, filePath);
         String expectedResult = "Part 1: " + 514579;
         String actualResult = day01.firstPart();
-        Assert.assertEquals(expectedResult, actualResult);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 
 
@@ -41,7 +60,6 @@ public class Day01Test {
         Day01 day01 = new Day01(fileReaders, filePath);
         String expectedResult = "Part 2: " + 241861950;
         String actualResult = day01.secondPart();
-        Assert.assertEquals(expectedResult, actualResult);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
-
 }
