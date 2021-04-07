@@ -19,21 +19,29 @@ public class Day01 implements Days {
     /** The puzzle status {@code HashMap} */
     private final HashMap<String, ProblemStatusEnum> problemStatus;
 
-    private final int[] numbers;
+    /** The puzzle inputs */
+    private int[] numbers;
 
-    Day01() {
+    private FileReaders fileReaders;
+
+    private String filePath;
+
+    public Day01(){
         this.problemStatus = new HashMap<>();
         this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
         this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
-        this.numbers = new int[]{};
+    }
+
+    Day01(int[] numbers) {
+        this();
+        this.numbers = numbers;
     }
 
     @Autowired
     Day01(FileReaders fileReaders, @Value("${day1.file}") String filePath) {
-        this.problemStatus = new HashMap<>();
-        this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
-        this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
-        this.numbers = fileReaders.readFileIntoArrayOfIntegers(filePath);
+        this(null);
+        this.fileReaders = fileReaders;
+        this.filePath = filePath;
     }
 
     @Override
@@ -48,22 +56,33 @@ public class Day01 implements Days {
 
     @Override
     public String firstPart() {
+        this.loadPuzzleInputs();
         return "Part 1: " + calculatePart1();
     }
 
     @Override
     public String secondPart() {
+        this.loadPuzzleInputs();
         return "Part 2: " + calculatePart2();
+    }
+
+    /**
+     * This Method is used to load the puzzle inputs before execute on of the puzzle parts.
+     */
+    private void loadPuzzleInputs() {
+        if (this.numbers == null) {
+            this.numbers = this.fileReaders.readFileIntoArrayOfIntegers(this.filePath);
+        }
     }
 
     /**
      * Primary method for Day 1, Part 1.
      * Calculates the Report
      *
-     * @return Returns the product of the multiplication of two numbers that add up to 2020.
+     * @return returns the product of the multiplication of two numbers that add up to 2020.
      */
     private int calculatePart1() {
-        int[] entries = this.findTwoEntriesThatSumToX(this.numbers, 2020);
+        int[] entries = this.findTwoEntriesThatSumToX(2020);
         return multiplyListEntries(entries);
     }
 
@@ -72,10 +91,10 @@ public class Day01 implements Days {
      * Primary method for Day 1, Part 2.
      * Calculates the Report
      *
-     * @return Returns the product of the multiplication of three numbers that add up to 2020.
+     * @return returns the product of the multiplication of three numbers that add up to 2020.
      */
     private int calculatePart2() {
-        int[] entries = this.findThreeEntriesThatSumToX(this.numbers, 2020);
+        int[] entries = this.findThreeEntriesThatSumToX(2020);
         return multiplyListEntries(entries);
     }
 
@@ -83,9 +102,9 @@ public class Day01 implements Days {
      * This helper function calculates the product of all list entries.
      *
      * @param values values
-     * @return Returns the product of all list entries.
+     * @return returns the product of all list entries.
      */
-    int multiplyListEntries(int[] values) {
+    static int multiplyListEntries(int[] values) {
         if (values.length > 0) {
             return Arrays.stream(values).reduce(1, (a, b) -> a * b);
         } else {
@@ -94,24 +113,22 @@ public class Day01 implements Days {
     }
 
     /***
-     * This helper function is used to find two list entries that add up to the value x.
+     * This function can use to find two list entries in numbers that add up to the value x.
      *
-     * @param values values
-     * @param x sum of the two list entries
-     * @return Returns the list entries witch add up to x.
+     * @return returns the list entries witch add up to x.
      */
-    int[] findTwoEntriesThatSumToX(int[] values, int x) throws IllegalArgumentException {
+    int[] findTwoEntriesThatSumToX(int x) throws NullPointerException {
 
-        if (values == null) {
-            throw new IllegalArgumentException("Values must not be null!");
+        if (this.numbers == null) {
+            throw new NullPointerException("numbers must be not null!");
         }
 
         int[] entries = new int[]{};
         outer:
-        for (int i = 0; i < values.length - 1; i++) {
-            for (int j = i + 1; j < values.length - 1; j++) {
-                if (values[i] + values[j] == x) {
-                    entries = new int[]{values[i], values[j]};
+        for (int i = 0; i < this.numbers.length - 1; i++) {
+            for (int j = i + 1; j < this.numbers.length - 1; j++) {
+                if (this.numbers[i] + this.numbers[j] == x) {
+                    entries = new int[]{this.numbers[i], this.numbers[j]};
                     break outer;
                 }
             }
@@ -121,25 +138,24 @@ public class Day01 implements Days {
 
 
     /***
-     * This helper function is used to find three list entries that add up to the value x.
+     * This function can use to find three list entries in numbers that add up to the value x.
      *
-     * @param values values
      * @param x sum of the three list entries
-     * @return Returns the list entries witch add up to x.
+     * @return returns the list entries witch add up to x.
      */
-    int[] findThreeEntriesThatSumToX(int[] values, int x) throws IllegalArgumentException {
+    int[] findThreeEntriesThatSumToX(int x) throws NullPointerException {
 
-        if (values == null) {
-            throw new IllegalArgumentException("Values must not be null!");
+        if (this.numbers == null) {
+            throw new NullPointerException("numbers must be not null!");
         }
 
         int[] entries = new int[]{};
         outer:
-        for (int i = 0; i < values.length - 3; i++) {
-            for (int j = i + 1; j < values.length - 2; j++) {
-                for (int k = j + 1; k < values.length - 1; k++) {
-                    if (values[i] + values[j] + values[k] == x) {
-                        entries = new int[]{values[i], values[j], values[k]};
+        for (int i = 0; i < this.numbers.length - 3; i++) {
+            for (int j = i + 1; j < this.numbers.length - 2; j++) {
+                for (int k = j + 1; k < this.numbers.length - 1; k++) {
+                    if (this.numbers[i] + this.numbers[j] + this.numbers[k] == x) {
+                        entries = new int[]{this.numbers[i], this.numbers[j], this.numbers[k]};
                         break outer;
                     }
                 }
@@ -147,5 +163,4 @@ public class Day01 implements Days {
         }
         return entries;
     }
-
 }

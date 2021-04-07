@@ -22,17 +22,12 @@ public class Day01Test {
     @Value("${day1.file}")
     private String filePath;
 
-    private Day01 day01;
-
-    @Before
-    public void before() {
-        this.day01 = new Day01();
-    }
 
     public void testGetDay() {
+        Day01 day01 = new Day01(null);
         int expectedResult = 1;
 
-        int actualResult = this.day01.getDay();
+        int actualResult = day01.getDay();
 
         assertThat(expectedResult).isEqualTo(actualResult);
     }
@@ -42,7 +37,7 @@ public class Day01Test {
         int[] values = new int[]{979, 366, 675};
         int expectedResult = 241861950;
 
-        int actualResult = this.day01.multiplyListEntries(values);
+        int actualResult = Day01.multiplyListEntries(values);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -52,59 +47,57 @@ public class Day01Test {
         int[] values = new int[]{};
         int expectedResult = 0;
 
-        int actualResult = this.day01.multiplyListEntries(values);
+        int actualResult = Day01.multiplyListEntries(values);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     public void testFindTwoEntriesThatSumToX() {
-        int[] values = new int[]{1721, 979, 366, 299, 675, 1456};
+        Day01 day01 = new Day01(new int[]{1721, 979, 366, 299, 675, 1456});
+
         int[] expectedResult = new int[]{1721, 299};
 
-        int[] actualResult = this.day01.findTwoEntriesThatSumToX(values, 2020);
+        int[] actualResult = day01.findTwoEntriesThatSumToX(2020);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     public void testFindTwoEntriesThatSumToXWithEmptyList() {
-        int[] values = new int[]{};
+        Day01 day01 = new Day01(new int[]{});
         int[] expectedResult = new int[]{};
 
-        int[] actualResult = this.day01.findTwoEntriesThatSumToX(values, 2020);
+        int[] actualResult = day01.findTwoEntriesThatSumToX(2020);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testFindTowEntriesThatSumToXWithNull() {
-        this.day01.findTwoEntriesThatSumToX(null, 2020);
-    }
-
     @Test
     public void testFindThreeEntriesThatSumToX() {
-        int[] values = new int[]{1721, 979, 366, 299, 675, 1456};
+        Day01 day01 = new Day01(new int[]{1721, 979, 366, 299, 675, 1456});
         int[] expectedResult = new int[]{979, 366, 675};
 
-        int[] actualResult = this.day01.findThreeEntriesThatSumToX(values, 2020);
+        int[] actualResult = day01.findThreeEntriesThatSumToX( 2020);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
     @Test
     public void testFindThreeEntriesThatSumToXWithEmptyList() {
-        int[] values = new int[]{};
+        Day01 day01 = new Day01(new int[]{});
         int[] expectedResult = new int[]{};
 
-        int[] actualResult = this.day01.findThreeEntriesThatSumToX(values, 2020);
+        int[] actualResult = day01.findThreeEntriesThatSumToX( 2020);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void testFindThreeEntriesThatSumToXWithNull() {
-        this.day01.findThreeEntriesThatSumToX(null, 2020);
+        Day01 day01 = new Day01(null);
+
+        day01.findThreeEntriesThatSumToX( 2020);
     }
 
     @Test
