@@ -86,7 +86,7 @@ public class Day01 implements Days {
      * @return Returns the product of all list entries.
      */
     int multiplyListEntries(int[] values) {
-        if(values.length > 0){
+        if (values.length > 0) {
             return Arrays.stream(values).reduce(1, (a, b) -> a * b);
         } else {
             return 0;
@@ -100,8 +100,13 @@ public class Day01 implements Days {
      * @param x sum of the two list entries
      * @return Returns the list entries witch add up to x.
      */
-    int[] findTwoEntriesThatSumToX(int[] values, int x) {
-        int[] entries = null;
+    int[] findTwoEntriesThatSumToX(int[] values, int x) throws IllegalArgumentException {
+
+        if (values == null) {
+            throw new IllegalArgumentException("Values must not be null!");
+        }
+
+        int[] entries = new int[]{};
         outer:
         for (int i = 0; i < values.length - 1; i++) {
             for (int j = i + 1; j < values.length - 1; j++) {
@@ -122,8 +127,13 @@ public class Day01 implements Days {
      * @param x sum of the three list entries
      * @return Returns the list entries witch add up to x.
      */
-    int[] findThreeEntriesThatSumToX(int[] values, int x) {
-        int[] entries = null;
+    int[] findThreeEntriesThatSumToX(int[] values, int x) throws IllegalArgumentException {
+
+        if (values == null) {
+            throw new IllegalArgumentException("Values must not be null!");
+        }
+
+        int[] entries = new int[]{};
         outer:
         for (int i = 0; i < values.length - 3; i++) {
             for (int j = i + 1; j < values.length - 2; j++) {
