@@ -23,7 +23,7 @@ public class Day02 implements Days {
 
     private String filePath;
 
-    private List<String> passwords;
+    private List<String> passwordWithPoliceList;
 
 
     Day02() {
@@ -45,8 +45,8 @@ public class Day02 implements Days {
      * This Method is used to load the puzzle inputs before execute on of the puzzle parts.
      */
     private void loadPuzzleInputs() {
-        if (passwords == null) {
-            passwords = fileReaders.readFileIntoStringList(filePath);
+        if (passwordWithPoliceList == null) {
+            passwordWithPoliceList = fileReaders.readFileIntoStringList(filePath);
         }
     }
 
@@ -62,7 +62,8 @@ public class Day02 implements Days {
 
     @Override
     public String firstPart() {
-        return null;
+        loadPuzzleInputs();
+        return "Part 1: " + calculatePart1();
     }
 
     @Override
@@ -70,5 +71,18 @@ public class Day02 implements Days {
         return null;
     }
 
+    private int calculatePart1(){
+       for(String passwordAndPolice : passwordWithPoliceList){
+           break;
+           //TODO
+           // 1. Split police from password
+           // 2. Parse minOccurrence, maxOccurrence and the letter
+           // 3. Count the occurrence of the letter of the password police
+           // 4. Check if the password valid, by compare the occurrence with minOccurrence and maxOccurrence
+           // Split code in small methods and test these with Unit tests
+       }
+
+       return 2;
+    }
 
 }
