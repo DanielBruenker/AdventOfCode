@@ -70,8 +70,8 @@ public class Day01 implements Days {
      * This Method is used to load the puzzle inputs before execute on of the puzzle parts.
      */
     private void loadPuzzleInputs() {
-        if (this.numbers == null) {
-            this.numbers = this.fileReaders.readFileIntoArrayOfIntegers(this.filePath);
+        if (numbers == null) {
+            numbers = fileReaders.readFileIntoArrayOfIntegers(filePath);
         }
     }
 
@@ -119,16 +119,16 @@ public class Day01 implements Days {
      */
     int[] findTwoEntriesThatSumToX(int x) throws NullPointerException {
 
-        if (this.numbers == null) {
+        if (numbers == null) {
             throw new NullPointerException("numbers must be not null!");
         }
 
         int[] entries = new int[]{};
         outer:
-        for (int i = 0; i < this.numbers.length - 1; i++) {
-            for (int j = i + 1; j < this.numbers.length - 1; j++) {
-                if (this.numbers[i] + this.numbers[j] == x) {
-                    entries = new int[]{this.numbers[i], this.numbers[j]};
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length - 1; j++) {
+                if (this.numbers[i] + numbers[j] == x) {
+                    entries = new int[]{numbers[i], numbers[j]};
                     break outer;
                 }
             }
@@ -145,17 +145,17 @@ public class Day01 implements Days {
      */
     int[] findThreeEntriesThatSumToX(int x) throws NullPointerException {
 
-        if (this.numbers == null) {
+        if (numbers == null) {
             throw new NullPointerException("numbers must be not null!");
         }
 
         int[] entries = new int[]{};
         outer:
-        for (int i = 0; i < this.numbers.length - 3; i++) {
-            for (int j = i + 1; j < this.numbers.length - 2; j++) {
-                for (int k = j + 1; k < this.numbers.length - 1; k++) {
-                    if (this.numbers[i] + this.numbers[j] + this.numbers[k] == x) {
-                        entries = new int[]{this.numbers[i], this.numbers[j], this.numbers[k]};
+        for (int i = 0; i < numbers.length - 3; i++) {
+            for (int j = i + 1; j < numbers.length - 2; j++) {
+                for (int k = j + 1; k < numbers.length - 1; k++) {
+                    if (numbers[i] + numbers[j] + numbers[k] == x) {
+                        entries = new int[]{numbers[i], numbers[j], numbers[k]};
                         break outer;
                     }
                 }
