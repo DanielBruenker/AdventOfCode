@@ -16,10 +16,9 @@ public class Day02Test {
 
     @Test
     public void testGetDay() {
-        Day02 day02 = new Day02(fileReaders);
+        Day02 day02 = new Day02();
         int expectedResult = 2;
         int actualResult = day02.getDay();
         Assert.assertEquals(expectedResult, actualResult);
     }
-
 }
