@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * Implementation for <i>Day 1: Report Repair/i>.
+ * Implementation for <i>Day 1: Report Repair</i>.
  */
 @Component
 public class Day01 implements Days {
