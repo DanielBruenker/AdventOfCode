@@ -50,4 +50,24 @@ public class Day02Test {
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
+    @Test
+    public void testSecondPartReturnsExpectedResult() {
+        FileReaders fileReadersMock = mock(FileReaders.class);
+        List<String> stringList = Arrays.asList(
+                "1-3 a: abcde",
+                "1-3 b: cdefg",
+                "2-9 c: ccccccccc"
+        );
+        String expectedResult = "Part 2: " + 1;
+
+        when(fileReadersMock.readFileIntoStringList(anyString()))
+                .thenReturn(stringList);
+
+        Day02 day02 = new Day02(fileReadersMock, anyString());
+
+        String actualResult = day02.secondPart();
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
 }
