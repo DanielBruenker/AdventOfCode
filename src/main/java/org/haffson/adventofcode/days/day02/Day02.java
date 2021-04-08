@@ -34,7 +34,7 @@ public class Day02 implements Days {
     }
 
     @Autowired
-    public Day02(FileReaders fileReaders, @Value("{$day2.file}") String filePath) {
+    public Day02(FileReaders fileReaders, @Value("${day2.file}") String filePath) {
         this.problemStatus = new HashMap<>();
         this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
         this.problemStatus.put("2", ProblemStatusEnum.UNSOLVED);
