@@ -2,7 +2,7 @@ package org.haffson.adventofcode.days.day03;
 
 import java.util.List;
 
-public class Forest {
+class Forest {
 
     private final boolean[][] fields;
     private final int nColumns;
@@ -28,20 +28,26 @@ public class Forest {
 
     public static Forest fromMapStringList(List<String> rows){
         boolean[][] fields = new boolean[rows.size()][];
-        for(int rowIndex = 0; rowIndex < rows.size(); rowIndex++){
-            fields[rowIndex] = new boolean[rows.get(rowIndex).length()];
-            for(int columnIndex = 0; columnIndex < rows.get(rowIndex).length(); columnIndex++){
-                fields[rowIndex][columnIndex] = rows.get(rowIndex).charAt(columnIndex) == '#';
+
+        for(int row = 0; row < rows.size(); row++){
+            fields[row] = new boolean[rows.get(row).length()];
+            for(int col = 0; col < rows.get(row).length(); col++){
+                fields[row][col] = rows.get(row).charAt(col) == '#';
             }
         }
+
         return new Forest(fields);
     }
 
-    public int crossAndCountTrees(int rightSteps, int downSteps){
+    public int crossAndCountTrees(Slope slope){
         int treeCount = 0;
-        for(int rowIndex = 0, columnIndex = 0; rowIndex < nRows; rowIndex += downSteps, columnIndex += rightSteps){
-            treeCount += (fields[rowIndex][columnIndex % fields[rowIndex].length]) ? 1 : 0;
+        int down = slope.getDown();
+        int right = slope.getRight();
+
+        for(int row = 0, col = 0; row < nRows; row += down, col += right){
+            treeCount += (fields[row][col % fields[row].length]) ? 1 : 0;
         }
+
         return treeCount;
     }
 }

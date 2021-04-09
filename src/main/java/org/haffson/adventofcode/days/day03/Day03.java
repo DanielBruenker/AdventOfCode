@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,10 +27,18 @@ public class Day03 implements Days {
 
     private String filePath;
 
+    private final List<Slope> SLOPES = Arrays.asList(
+            new Slope(1, 1),
+            new Slope(3, 1),
+            new Slope(5,1),
+            new Slope(7,1),
+            new Slope(1, 2)
+    );
+
     Day03(){
         this.problemStatus = new HashMap<>();
         this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
-        this.problemStatus.put("2", ProblemStatusEnum.UNSOLVED);
+        this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
     }
 
     @Autowired
@@ -56,7 +65,8 @@ public class Day03 implements Days {
 
     @Override
     public String secondPart() {
-        return null;
+        loadPuzzleInputs();
+        return "Part 2: " + calculatePart2();
     }
 
     @Override
@@ -71,7 +81,18 @@ public class Day03 implements Days {
 
     private int calculatePart1(){
         Forest forest = Forest.fromMapStringList(rows);
-        return forest.crossAndCountTrees(3, 1);
+        return forest.crossAndCountTrees(SLOPES.get(1));
+    }
+
+    private long calculatePart2() {
+        Forest forest = Forest.fromMapStringList(rows);
+        long totalNumberOfTrees = 1;
+        int numberOfTrees;
+        for(Slope slope : SLOPES){
+            numberOfTrees = forest.crossAndCountTrees(slope);
+            totalNumberOfTrees *= (numberOfTrees > 0) ? numberOfTrees : 1;
+        }
+        return totalNumberOfTrees;
     }
 
 }

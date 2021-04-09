@@ -48,10 +48,11 @@ public class ForestTest {
                 ".....#...........#......#....#.",
                 "......#..#......#.#..#...##.#.#"
         );
+        Slope slope = new Slope(3, 1);
         int expectedResult = 2;
         Forest forest = Forest.fromMapStringList(rows);
 
-        int actualResult = forest.crossAndCountTrees(3, 1);
+        int actualResult = forest.crossAndCountTrees(slope);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }

@@ -44,7 +44,7 @@ public class Day03Test {
                 ".##................##..#...##.."
         );
 
-        String expectedResult = "Part 1: " + 2;
+        String expectedResult = "Part 1: " + 6;
 
         when(fileReadersMock.readFileIntoStringList(anyString()))
                 .thenReturn(rows);
@@ -55,5 +55,38 @@ public class Day03Test {
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void testSecondPartReturnsExpectedResult(){
+        FileReaders fileReadersMock = mock(FileReaders.class);
+        List<String> rows = Arrays.asList(
+                ".#...#.......#...#...#.#.#.....",
+                "####.....#.#..#...#...........#",
+                ".....#...........#......#....#.",
+                "......#..#......#.#..#...##.#.#",
+                "............#......#...........",
+                "...........#.#.#....#.......##.",
+                "....#.......#..............#...",
+                "........##...#.#.....##...##.#.",
+                ".#.#.....##................##..",
+                ".##................##..#...##.."
+        );
+
+        String expectedResult = "Part 2: " + 2;
+
+        when(fileReadersMock.readFileIntoStringList(anyString()))
+                .thenReturn(rows);
+
+        Day03 day03 = new Day03(fileReadersMock, anyString());
+
+        String actualResult = day03.secondPart();
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+
+
+
+
 
 }
