@@ -1,7 +1,6 @@
 package org.haffson.adventofcode.days.day01;
 
 import org.haffson.adventofcode.utils.FileReaders;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

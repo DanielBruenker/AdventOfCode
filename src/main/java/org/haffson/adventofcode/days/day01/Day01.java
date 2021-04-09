@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.HashMap;
 
+
 /**
  * Implementation for <i>Day 1: Report Repair</i>.
  */
@@ -82,7 +83,7 @@ public class Day01 implements Days {
      * @return returns the product of the multiplication of two numbers that add up to 2020.
      */
     private int calculatePart1() {
-        int[] entries = this.findTwoEntriesThatSumToX(2020);
+        int[] entries = findTwoEntriesThatSumToX(2020);
         return multiplyListEntries(entries);
     }
 
@@ -94,7 +95,7 @@ public class Day01 implements Days {
      * @return returns the product of the multiplication of three numbers that add up to 2020.
      */
     private int calculatePart2() {
-        int[] entries = this.findThreeEntriesThatSumToX(2020);
+        int[] entries = findThreeEntriesThatSumToX(2020);
         return multiplyListEntries(entries);
     }
 
