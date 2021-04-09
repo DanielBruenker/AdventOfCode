@@ -13,7 +13,7 @@ public class PasswordPoliceSecondPart implements IPasswordPolice{
         this.character = character;
     }
 
-    static org.haffson.adventofcode.days.day02.PasswordPoliceSecondPart fromPoliceAndPasswordString(String policeAndPassword) {
+    static PasswordPoliceSecondPart fromPoliceAndPasswordString(String policeAndPassword) {
         String policeString = PasswordPoliceParser.parsePolice(policeAndPassword);
         char character = PasswordPoliceParser.parseCharacter(policeString);
         int firstIndex = PasswordPoliceParser.parseFirstPoliceCondition(policeString) - 1;

@@ -98,5 +98,3 @@ public class Day02 implements Days {
     }
 
 }
-
-
