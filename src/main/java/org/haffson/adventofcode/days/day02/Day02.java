@@ -6,12 +6,10 @@ import org.haffson.adventofcode.utils.FileReaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
  * Implementation for <i>Day 2</i>.
@@ -87,7 +85,6 @@ public class Day02 implements Days {
         return validPasswordCount;
     }
 
-
     private int calculatePart2() {
         int validPasswordCount = 0;
         for (String policeAndPassword : policeAndPasswordList) {
@@ -99,7 +96,6 @@ public class Day02 implements Days {
         }
         return validPasswordCount;
     }
-
 
 }
 

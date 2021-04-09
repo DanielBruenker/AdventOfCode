@@ -1,5 +1,6 @@
 package org.haffson.adventofcode.days.day02;
 
+
 public class PasswordPoliceSecondPart implements IPasswordPolice{
 
     private final int firstIndex;

@@ -2,6 +2,7 @@ package org.haffson.adventofcode.days.day02;
 
 import org.springframework.util.StringUtils;
 
+
 public class PasswordPoliceFirstPart implements IPasswordPolice {
 
     private final int minOccurrence;
