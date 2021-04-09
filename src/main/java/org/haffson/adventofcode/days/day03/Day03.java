@@ -33,7 +33,7 @@ public class Day03 implements Days {
     }
 
     @Autowired
-    Day03(FileReaders fileReaders, @Value("$(day3.file)") String filePath){
+    Day03(FileReaders fileReaders, @Value("${day3.file}") String filePath){
         this();
         this.fileReaders = fileReaders;
         this.filePath = filePath;
