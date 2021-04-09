@@ -2,6 +2,9 @@ package org.haffson.adventofcode.days.day03;
 
 import java.util.List;
 
+/***
+ * This class is used to represent the forest (map) and to count the trees on a toboggan trajectory.
+ */
 class Forest {
 
     private final boolean[][] fields;
@@ -26,6 +29,12 @@ class Forest {
         return nRows;
     }
 
+    /***
+     * This class function can be used to create a Forest object from a string list which contains the map.
+     *
+     * @param rows list of strings which represent the forest (map)
+     * @return the created Forest object
+     */
     public static Forest fromMapStringList(List<String> rows){
         boolean[][] fields = new boolean[rows.size()][];
 
@@ -39,6 +48,12 @@ class Forest {
         return new Forest(fields);
     }
 
+    /***
+     * This function counts the numbers of trees of the toboggan trajectory for the passed slope.
+     *
+     * @param slope slope of the toboggan trajectory
+     * @return the number of trees
+     */
     public int crossAndCountTrees(Slope slope){
         int treeCount = 0;
         int down = slope.getDown();
