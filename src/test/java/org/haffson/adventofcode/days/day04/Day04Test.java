@@ -39,7 +39,7 @@ public class Day04Test {
         );
         String expectedResult = "Part 1: " + 2;
 
-        when(fileReadersMock.readFileIntoStringList(anyString()))
+        when(fileReadersMock.readFileIntoStringList(anyString(), true))
                 .thenReturn(passPorts);
 
         Day04 day04 = new Day04(fileReadersMock, anyString());

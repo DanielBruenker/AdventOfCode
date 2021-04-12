@@ -3,7 +3,9 @@ package org.haffson.adventofcode.days.day04;
 import org.haffson.adventofcode.ProblemStatusEnum;
 import org.haffson.adventofcode.days.Days;
 import org.haffson.adventofcode.utils.FileReaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 /**
  * Implementation for <i>Day 4: Passport Processing</i>.
  */
+@Component
 public class Day04 implements Days {
 
     /** The puzzle status {@code HashMap} */
@@ -29,7 +32,8 @@ public class Day04 implements Days {
         this.problemStatus.put("2", ProblemStatusEnum.UNSOLVED);
     }
 
-    Day04(FileReaders fileReaders, @Value("${'day4.file'}") String filePath){
+    @Autowired
+    Day04(FileReaders fileReaders, @Value("${day4.file}") String filePath){
         this();
         this.fileReaders = fileReaders;
         this.filePath = filePath;
@@ -40,7 +44,7 @@ public class Day04 implements Days {
      */
     private void loadPuzzleInputs() {
         if (passPorts == null) {
-            List<String> data = fileReaders.readFileIntoStringList(filePath);
+            List<String> data = fileReaders.readFileIntoStringList(filePath, true);
             passPorts = PassportParser.parsePassports(data);
         }
     }
@@ -58,7 +62,7 @@ public class Day04 implements Days {
 
     @Override
     public int getDay() {
-        return 0;
+        return 4;
     }
 
     @Override
