@@ -40,8 +40,8 @@ public class Day04 implements Days {
      */
     private void loadPuzzleInputs() {
         if (passPorts == null) {
-            passPorts = fileReaders.readFileIntoStringList(filePath);
-            passPorts = PassportParser.parsePassports(passPorts);
+            List<String> data = fileReaders.readFileIntoStringList(filePath);
+            passPorts = PassportParser.parsePassports(data);
         }
     }
 
