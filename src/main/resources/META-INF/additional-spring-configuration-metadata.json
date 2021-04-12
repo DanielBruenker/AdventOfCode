@@ -4,5 +4,11 @@
       "name": "day1.file",
       "type": "java.lang.String",
       "description": "Path to the puzzle file of day 1."
-  }
-] }
+    },
+    {
+      "name": "day4.file",
+      "type": "java.lang.String",
+      "description": "Path to the puzzle file of day 4."
+    }
+  ]
+}
