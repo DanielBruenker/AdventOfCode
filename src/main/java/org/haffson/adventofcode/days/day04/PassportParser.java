@@ -10,8 +10,8 @@ import java.util.List;
 public class PassportParser {
 
     /***
-     *  This function can use to convert the passport list into a more manageable list,
-     *  without empty entries and where each passport consists of only one entry.
+     * This function can use to convert the passport list into a more manageable list,
+     * without empty entries and where each passport consists of only one entry.
      *
      * @param rawPassports raw passports
      * @return the parsed passports as List
