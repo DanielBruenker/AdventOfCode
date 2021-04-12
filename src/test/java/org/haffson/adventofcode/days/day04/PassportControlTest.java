@@ -22,14 +22,15 @@ public class PassportControlTest {
     }
 
     @Test
-    public void testCheckPassportHasFieldReturnExpectedResult() {
-        String testPassport = "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd byr:1937 iyr:2017 hgt:183cm";
+    public void testCheckPassportFieldReturnExpectedResult() {
+        String testPassport = "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884 hcl:#cfa07d byr:1929";
 
         // Case 1: Existing field
-        boolean actualResultCase1 = PassportControl.checkPassportHasField("ecl", testPassport);
-
+        String condition = "(amb|blu|brn|gry|grn|hzl|oth)";
+        boolean actualResultCase1 = PassportControl.checkPassportField("ecl", "",  testPassport);
         // Case 2: Missing Field
-        boolean actualResultCase2 = PassportControl.checkPassportHasField("cid", testPassport);
+        condition = "(1[5-8][0-9]cm|19[0-3]cm|59in|6[0-9]in|7[0-6]in)";
+        boolean actualResultCase2 = PassportControl.checkPassportField("hgt", "", testPassport);
 
         assertThat(actualResultCase1).isTrue();
         assertThat(actualResultCase2).isFalse();
