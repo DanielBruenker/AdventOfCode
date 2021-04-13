@@ -36,4 +36,8 @@ public class Passport {
         return fields.get(fieldName);
     }
 
+    @Override
+    public String toString() {
+        return "Passport{" + "fields=" + fields + '}';
+    }
 }

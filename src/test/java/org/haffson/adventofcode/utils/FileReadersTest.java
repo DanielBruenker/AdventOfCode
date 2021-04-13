@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -68,7 +69,7 @@ public class FileReadersTest {
                 "1456"
         );
         int[] expectedResult = new int[]{1721, 979, 366, 299, 675, 1456};
-        when(fileReadersSpy.readFileIntoStringList(anyString(), false))
+        when(fileReadersSpy.readFileIntoStringList(anyString(), eq(false)))
                 .thenReturn(values);
 
         int[] actualResult = fileReadersSpy.readFileIntoArrayOfIntegers(anyString());
@@ -83,7 +84,7 @@ public class FileReadersTest {
                 "One",
                 "Not valid number!"
         );
-        when(fileReadersSpy.readFileIntoStringList(anyString(), false))
+        when(fileReadersSpy.readFileIntoStringList(anyString(), eq(false)))
                 .thenReturn(values);
 
         fileReadersSpy.readFileIntoArrayOfIntegers(anyString());
