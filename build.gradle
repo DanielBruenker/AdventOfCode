@@ -15,6 +15,7 @@ plugins {
     id 'java'
     id "com.moowork.node" version "1.2.0"
     id "org.asciidoctor.convert" version "1.5.3"
+    id "jacoco"
 }
 
 allprojects {
@@ -33,6 +34,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.moowork.node"
+apply plugin: "jacoco"
 
 node {
     version = '10.14.1'
@@ -84,6 +86,15 @@ dependencies {
 
 test {
     outputs.dir snippetsDir
+    finalizedBy jacocoTestReport
+}
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestReport {
+    dependsOn test
 }
 
 asciidoctor {
