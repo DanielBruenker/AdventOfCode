@@ -20,7 +20,7 @@ public class Day04 implements Days {
     private final HashMap<String, ProblemStatusEnum> problemStatus;
 
     /** The puzzle inputs */
-    private List<String> passPorts; // Passports are separated by an empty line
+    private List<Passport> passPorts; // Passports are separated by an empty line
 
     private FileReaders fileReaders;
 
@@ -29,7 +29,7 @@ public class Day04 implements Days {
     Day04(){
         this.problemStatus = new HashMap<>();
         this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
-        this.problemStatus.put("2", ProblemStatusEnum.UNSOLVED);
+        this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
     }
 
     @Autowired
@@ -57,7 +57,8 @@ public class Day04 implements Days {
 
     @Override
     public String secondPart() {
-        return null;
+        loadPuzzleInputs();
+        return "Part 2: " + calculatePart2();
     }
 
     @Override
@@ -77,15 +78,25 @@ public class Day04 implements Days {
      */
     private int calculatePart1() {
         int numberOfValidPassports = 0;
-        for(String passport : passPorts){
-            boolean isValid = PassportControl.controlPassport(passport);
-            numberOfValidPassports += (isValid) ? 1 : 0;
+        for(Passport passport : passPorts){
+            boolean isValid = PassportControl.controlPassport(passport, false);
+            numberOfValidPassports += isValid ? 1 : 0;
         }
         return numberOfValidPassports;
 
     }
+
+    /***
+     * This function is used to calculate the solution for part 2.
+     *
+     * @return the number of valid passports
+     */
+    private int calculatePart2() {
+        int numberOfValidPassports = 0;
+        for(Passport passport : passPorts){
+            boolean isValid = PassportControl.controlPassport(passport, true);
+            numberOfValidPassports += isValid ? 1 : 0;
+        }
+        return numberOfValidPassports;
+    }
 }
-
-
-
-

@@ -16,26 +16,29 @@ public class PassportParser {
      * @param rawPassports raw passports
      * @return the parsed passports as List
      */
-    public static List<String> parsePassports(List<String> rawPassports) {
-        List<String> passports = new ArrayList<>();
-        StringBuilder passport = null;
+    public static List<Passport> parsePassports(List<String> rawPassports) {
+        List<Passport> passports = new ArrayList<>();
+        StringBuilder stringBuilder = null;
 
         for (String line : rawPassports) {
             if (line.isEmpty()) {
-                passports.add(passport.toString());
-                passport = null;
+                Passport passport = Passport.fromString(stringBuilder.toString());
+                passports.add(passport);
+                stringBuilder = null;
             } else {
-                if (passport != null) {
-                    passport.append(" ").append(line);
+                if (stringBuilder != null) {
+                    stringBuilder.append(" ").append(line);
                 } else {
-                    passport = new StringBuilder();
-                    passport.append(line);
+                    stringBuilder = new StringBuilder();
+                    stringBuilder.append(line);
                 }
             }
         }
-        passports.add(passport.toString());
+        Passport passport = Passport.fromString(stringBuilder.toString());
+        passports.add(passport);
 
         return passports;
     }
+
 
 }
