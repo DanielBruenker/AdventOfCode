@@ -26,14 +26,14 @@ public class Day04 implements Days {
 
     private String filePath;
 
-    Day04(){
+    Day04() {
         this.problemStatus = new HashMap<>();
         this.problemStatus.put("1", ProblemStatusEnum.SOLVED);
         this.problemStatus.put("2", ProblemStatusEnum.SOLVED);
     }
 
     @Autowired
-    Day04(FileReaders fileReaders, @Value("${day4.file}") String filePath){
+    Day04(FileReaders fileReaders, @Value("${day4.file}") String filePath) {
         this();
         this.fileReaders = fileReaders;
         this.filePath = filePath;
@@ -78,7 +78,7 @@ public class Day04 implements Days {
      */
     private int calculatePart1() {
         int numberOfValidPassports = 0;
-        for(Passport passport : passPorts){
+        for (Passport passport : passPorts) {
             boolean isValid = PassportControl.controlPassport(passport, false);
             numberOfValidPassports += isValid ? 1 : 0;
         }
@@ -93,7 +93,7 @@ public class Day04 implements Days {
      */
     private int calculatePart2() {
         int numberOfValidPassports = 0;
-        for(Passport passport : passPorts){
+        for (Passport passport : passPorts) {
             boolean isValid = PassportControl.controlPassport(passport, true);
             numberOfValidPassports += isValid ? 1 : 0;
         }

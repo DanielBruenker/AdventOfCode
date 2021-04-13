@@ -41,7 +41,7 @@ public class PassportParserTest {
 
         List<Passport> actualResult = PassportParser.parsePassports(testData);
 
-        for(int i = 0; i < actualResult.size(); i++){
+        for (int i = 0; i < actualResult.size(); i++) {
             assertThat(actualResult.get(i).toString()).isEqualTo(expectedResult.get(i).toString());
         }
     }

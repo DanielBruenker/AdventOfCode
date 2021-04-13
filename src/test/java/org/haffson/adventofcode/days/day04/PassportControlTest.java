@@ -23,7 +23,7 @@ public class PassportControlTest {
 
     @Test
     public void testCheckPassportFieldValueReturnExpectedResult() {
-           // Case 1: valid field value
+        // Case 1: valid field value
         String condition = "(amb|blu|brn|gry|grn|hzl|oth)";
         boolean actualResultCase1 = PassportControl.checkPassportFieldValue(condition, "amb");
         // Case 2: invalid field value
@@ -36,7 +36,7 @@ public class PassportControlTest {
 
 
     @Test
-    public void testCheckBirthYearReturnExpectedResult(){
+    public void testCheckBirthYearReturnExpectedResult() {
         // (Birth Year) - four digits; at least 1920 and at most 2002.
         // Test at least 1920
         boolean actualResult = PassportControl.checkBirthYear("1920");
@@ -60,7 +60,7 @@ public class PassportControlTest {
     }
 
     @Test
-    public void testCheckIssueYearReturnExpectedResult(){
+    public void testCheckIssueYearReturnExpectedResult() {
         // (Issue Year) - four digits; at least 2010 and at most 2020.
         // Test at least 2010
         boolean actualResult = PassportControl.checkIssueYear("2010");
@@ -84,7 +84,7 @@ public class PassportControlTest {
     }
 
     @Test
-    public void testCheckExpirationYearExpectedResult(){
+    public void testCheckExpirationYearExpectedResult() {
         // (Expiration Year) - four digits; at least 2020 and at most 2030.
         // Test at least 2020
         boolean actualResult = PassportControl.checkExpirationYear("2020");
@@ -108,7 +108,7 @@ public class PassportControlTest {
     }
 
     @Test
-    public void testCheckHeightExpectedResult(){
+    public void testCheckHeightExpectedResult() {
         // (Height) - a number followed by either cm or in:
         //      - If cm, the number must be at least 150 and at most 193.
         //      - If in, the number must be at least 59 and at most 76.
@@ -157,7 +157,7 @@ public class PassportControlTest {
 
 
     @Test
-    public void testCheckCheckHairColorExpectedResult(){
+    public void testCheckCheckHairColorExpectedResult() {
         // (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
 
         // Test valid hair color

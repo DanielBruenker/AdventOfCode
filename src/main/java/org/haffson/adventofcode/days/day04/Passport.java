@@ -1,6 +1,7 @@
 package org.haffson.adventofcode.days.day04;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Passport {
@@ -14,7 +15,7 @@ public class Passport {
     /***
      * This class method can use to create a Passport object from a string.
      *
-     * @param passport
+     * @param passport passport as String
      * @return a new Passport object
      */
     public static Passport fromString(String passport) {
