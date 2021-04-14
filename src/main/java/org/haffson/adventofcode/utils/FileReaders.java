@@ -15,6 +15,14 @@ import java.util.Scanner;
 public class FileReaders {
 
     public int[] readFileIntoArrayOfIntegers(String path) {
+        return readFileIntoStringList(path)
+                .stream()
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+
+    public List<String> readFileIntoStringList(String path) {
         List<String> data = new ArrayList<>();
         InputStream inputStream = FileReaders.class.getResourceAsStream(path);
         try (Scanner scanner = new Scanner(Objects.requireNonNull(inputStream))) {
@@ -25,7 +33,7 @@ public class FileReaders {
                 }
             }
         }
-        return data.stream().mapToInt(Integer::parseInt).toArray();
+        return data;
     }
 }
 
